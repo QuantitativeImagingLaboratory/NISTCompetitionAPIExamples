@@ -71,7 +71,7 @@ def get_analytic_endpoint(analytic_name):
 
 
 if __name__ == "__main__":
-    test_camera = 6
+    test_camera = 7
     camera_details = retrieve_camera_details(test_camera)
     analytic_endpoint = get_analytic_endpoint("Crowd Counting")
     view_crowd_count_analytic_results(camera_details, analytic_endpoint, (640, 480))

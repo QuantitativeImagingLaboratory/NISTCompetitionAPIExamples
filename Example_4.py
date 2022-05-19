@@ -31,10 +31,11 @@ def view_object_detection_analytic_results(camera, analytic_endpoint, reshape=No
         shape = image.shape
 
         detection = json.loads(data["results"])
+
         for k in detection:
             bb = k[2]
-            tl = (int(bb[0][0] * shape[0]), int(bb[0][1] * shape[1]))
-            br = (int(bb[1][0] * shape[0]), int(bb[1][1] * shape[1]))
+            tl = (int(bb[0][0] * shape[1]), int(bb[0][1] * shape[0]))
+            br = (int(bb[1][0] * shape[1]), int(bb[1][1] * shape[0]))
 
             image = cv2.rectangle(image, tl, br, (255, 0, 0), 1)
 
@@ -70,7 +71,7 @@ def get_analytic_endpoint(analytic_name):
 
 
 if __name__ == "__main__":
-    test_camera = 6
+    test_camera = 7
     camera_details = retrieve_camera_details(test_camera)
     analytic_endpoint = get_analytic_endpoint("Object Detection")
     view_object_detection_analytic_results(camera_details, analytic_endpoint, (640, 480))

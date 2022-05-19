@@ -42,6 +42,6 @@ def retrieve_camera_details(camera_id):
 
 
 if __name__ == "__main__":
-    test_camera = 6
+    test_camera = 7
     camera_details = retrieve_camera_details(test_camera)
     view_camera(camera_details, reshape=(640, 480))
