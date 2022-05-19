@@ -6,6 +6,7 @@ def list_analytics():
     """List Analytics"""
     url = "%s/main/list_analytic" % settings.API_SERVER
     response = requests.get(url)
+    print(response)
     data = response.json()
 
     print("There are %s analytics" % (len(data)))
