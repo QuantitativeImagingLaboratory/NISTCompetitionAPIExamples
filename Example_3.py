@@ -36,12 +36,14 @@ def retrieve_camera_details(camera_id):
     print("Retrieving details for camera %s" % camera_id)
     response = requests.get("%s/main/camera/%s" % (settings.API_SERVER, camera_id))
     camera_data = response.json()
+    print(camera_data)
     print("Name: ", camera_data["name"])
     print("FPS: ", camera_data["fps"])
     return camera_data
 
 
 if __name__ == "__main__":
-    test_camera = 7
+    test_camera = 10
     camera_details = retrieve_camera_details(test_camera)
+
     view_camera(camera_details, reshape=(640, 480))

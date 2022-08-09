@@ -9,7 +9,7 @@ import time
 import Example_2
 
 
-def view_crowd_count_analytic_results(camera, analytic_endpoint, reshape=None):
+def view_ingress_egress_count_analytic_results(camera, analytic_endpoint, reshape=None):
     camera_id = camera["id"]
     camera_fps = camera["fps"]
 
@@ -35,8 +35,9 @@ def view_crowd_count_analytic_results(camera, analytic_endpoint, reshape=None):
         if reshape is not None:
             image = cv2.resize(image, reshape)
 
-        density = json.loads(data["results"])
-        image = cv2.putText(image, 'Density %0.2f' % density, org, font,
+        counter = json.loads(data["results"])
+
+        image = cv2.putText(image, 'In: %s, Out: %s' % (counter["ingress_count"], counter["egress_count"]), org, font,
                             fontScale, color, thickness, cv2.LINE_AA)
 
         cv2.imshow("data", image)
@@ -47,7 +48,8 @@ def view_crowd_count_analytic_results(camera, analytic_endpoint, reshape=None):
             break
 
         print("Image with timestamp %s retrieved, press ESC to exit" % (datetime.datetime.fromtimestamp(float(data["timestamp"]))))
-        print("There crowd density is %s." % density)
+        print("%s people entered." % counter["ingress_count"])
+        print("%s people exited." % counter["egress_count"])
         time.sleep(1/camera_fps)
 
 
@@ -71,8 +73,9 @@ def get_analytic_endpoint(analytic_name):
 
 
 if __name__ == "__main__":
-    test_camera = 9
+    test_camera = 10
     camera_details = retrieve_camera_details(test_camera)
-    analytic_endpoint = get_analytic_endpoint("Crowd Counting")
-    view_crowd_count_analytic_results(camera_details, analytic_endpoint, (640, 480))
+    analytic_endpoint = get_analytic_endpoint("Ingress/Egress Counter")
+
+    view_ingress_egress_count_analytic_results(camera_details, analytic_endpoint, (640, 480))
 

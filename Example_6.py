@@ -100,16 +100,17 @@ def view_object_detection_analytic_results(camera, analytic_endpoint, reshape=No
             if counter > max_items_to_display:
                 break
 
+
         cv2.imshow("data", image)
         key = cv2.waitKey(1)
 
-        time.sleep(1)
+
         if key == 27:
             break
 
         print("Image with timestamp %s retrieved, press ESC to exit" % (datetime.datetime.fromtimestamp(float(data["timestamp"]))))
         print("There are %s objects in the image. Showing results for first 5 pedestrians, waiting for 10 seconds" % len(detection))
-        time.sleep(10)
+        time.sleep(9)
 
 
 def retrieve_camera_details(camera_id):
@@ -132,7 +133,7 @@ def get_analytic_endpoint(analytic_name):
 
 
 if __name__ == "__main__":
-    test_camera = 7
+    test_camera = 10
     camera_details = retrieve_camera_details(test_camera)
     analytic_endpoint = get_analytic_endpoint("Person Attribute Recognition")
     view_object_detection_analytic_results(camera_details, analytic_endpoint, (640*2, 480*2))

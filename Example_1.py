@@ -7,6 +7,7 @@ def list_cameras():
     url = "%s/main/camera" % settings.API_SERVER
     response = requests.get(url)
     data = response.json()
+
     print("There are %s cameras" % (len(data)))
 
     for index, camera in enumerate(data):
@@ -14,6 +15,8 @@ def list_cameras():
         print("\t ID: %s" % camera["id"])
         print("\t Name: %s" % camera["name"])
         print("\t FPS: %s" % camera["fps"])
+        print("\t Services: %s" % camera["services"])
+
 
     return data
 

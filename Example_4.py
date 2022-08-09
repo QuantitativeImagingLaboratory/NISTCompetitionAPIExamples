@@ -13,6 +13,7 @@ def view_object_detection_analytic_results(camera, analytic_endpoint, reshape=No
     camera_id = camera["id"]
     camera_fps = camera["fps"]
 
+
     while True:
         response = requests.get("%s/main/camera/%s/analytic/%s/" % (settings.API_SERVER, camera_id, analytic_endpoint))
         try:
@@ -71,7 +72,7 @@ def get_analytic_endpoint(analytic_name):
 
 
 if __name__ == "__main__":
-    test_camera = 7
+    test_camera = 8
     camera_details = retrieve_camera_details(test_camera)
     analytic_endpoint = get_analytic_endpoint("Object Detection")
     view_object_detection_analytic_results(camera_details, analytic_endpoint, (640, 480))

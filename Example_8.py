@@ -9,7 +9,7 @@ import time
 import Example_2
 
 
-def view_crowd_count_analytic_results(camera, analytic_endpoint, reshape=None):
+def view_object_count_analytic_results(camera, analytic_endpoint, reshape=None):
     camera_id = camera["id"]
     camera_fps = camera["fps"]
 
@@ -35,8 +35,8 @@ def view_crowd_count_analytic_results(camera, analytic_endpoint, reshape=None):
         if reshape is not None:
             image = cv2.resize(image, reshape)
 
-        density = json.loads(data["results"])
-        image = cv2.putText(image, 'Density %0.2f' % density, org, font,
+        count = json.loads(data["results"])
+        image = cv2.putText(image, 'Count %0.2f' % count, org, font,
                             fontScale, color, thickness, cv2.LINE_AA)
 
         cv2.imshow("data", image)
@@ -47,7 +47,7 @@ def view_crowd_count_analytic_results(camera, analytic_endpoint, reshape=None):
             break
 
         print("Image with timestamp %s retrieved, press ESC to exit" % (datetime.datetime.fromtimestamp(float(data["timestamp"]))))
-        print("There crowd density is %s." % density)
+        print("There count is %s." % count)
         time.sleep(1/camera_fps)
 
 
@@ -71,8 +71,8 @@ def get_analytic_endpoint(analytic_name):
 
 
 if __name__ == "__main__":
-    test_camera = 9
+    test_camera = 8
     camera_details = retrieve_camera_details(test_camera)
-    analytic_endpoint = get_analytic_endpoint("Crowd Counting")
-    view_crowd_count_analytic_results(camera_details, analytic_endpoint, (640, 480))
+    analytic_endpoint = get_analytic_endpoint("Object Counter")
+    view_object_count_analytic_results(camera_details, analytic_endpoint, (640, 480))
 
