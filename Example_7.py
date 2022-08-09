@@ -15,7 +15,7 @@ def view_ingress_egress_count_analytic_results(camera, analytic_endpoint, reshap
 
     font = cv2.FONT_HERSHEY_SIMPLEX
     org = (50, 50)
-    fontScale = 1
+    font_scale = 1
     color = (0, 0, 255)
     thickness = 2
 
@@ -38,7 +38,7 @@ def view_ingress_egress_count_analytic_results(camera, analytic_endpoint, reshap
         counter = json.loads(data["results"])
 
         image = cv2.putText(image, 'In: %s, Out: %s' % (counter["ingress_count"], counter["egress_count"]), org, font,
-                            fontScale, color, thickness, cv2.LINE_AA)
+                            font_scale, color, thickness, cv2.LINE_AA)
 
         cv2.imshow("data", image)
         key = cv2.waitKey(1)

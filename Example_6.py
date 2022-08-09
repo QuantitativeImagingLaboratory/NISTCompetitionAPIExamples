@@ -34,7 +34,7 @@ def short_name(attribute_name):
 def get_attributes_as_image(data):
     attributes_image = np.zeros((150, 150, 3)) * 255
     font = cv2.FONT_HERSHEY_SIMPLEX
-    fontScale = .25
+    font_scale = .25
     color = (0, 0, 255)
     thickness = 1
     origin = np.array([10, 0])
@@ -46,7 +46,7 @@ def get_attributes_as_image(data):
         string_representation = "%s : %s" % (short_name(each_attribute), data[each_attribute])
 
         attributes_image = cv2.putText(attributes_image, string_representation, origin, font,
-                            fontScale, color, thickness, cv2.LINE_AA)
+                            font_scale, color, thickness, cv2.LINE_AA)
 
     return attributes_image
 
@@ -100,10 +100,8 @@ def view_object_detection_analytic_results(camera, analytic_endpoint, reshape=No
             if counter > max_items_to_display:
                 break
 
-
         cv2.imshow("data", image)
         key = cv2.waitKey(1)
-
 
         if key == 27:
             break

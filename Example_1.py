@@ -17,7 +17,6 @@ def list_cameras():
         print("\t FPS: %s" % camera["fps"])
         print("\t Services: %s" % camera["services"])
 
-
     return data
 
 

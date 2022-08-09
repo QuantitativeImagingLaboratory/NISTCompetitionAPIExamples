@@ -13,7 +13,6 @@ def view_object_detection_analytic_results(camera, analytic_endpoint, reshape=No
     camera_id = camera["id"]
     camera_fps = camera["fps"]
 
-
     while True:
         response = requests.get("%s/main/camera/%s/analytic/%s/" % (settings.API_SERVER, camera_id, analytic_endpoint))
         try:

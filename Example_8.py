@@ -15,7 +15,7 @@ def view_object_count_analytic_results(camera, analytic_endpoint, reshape=None):
 
     font = cv2.FONT_HERSHEY_SIMPLEX
     org = (50, 50)
-    fontScale = 1
+    font_scale = 1
     color = (0, 0, 255)
     thickness = 2
 
@@ -37,7 +37,7 @@ def view_object_count_analytic_results(camera, analytic_endpoint, reshape=None):
 
         count = json.loads(data["results"])
         image = cv2.putText(image, 'Count %0.2f' % count, org, font,
-                            fontScale, color, thickness, cv2.LINE_AA)
+                            font_scale, color, thickness, cv2.LINE_AA)
 
         cv2.imshow("data", image)
         key = cv2.waitKey(1)
