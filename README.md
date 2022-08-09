@@ -100,7 +100,7 @@ The results are different for each analytic, and are described below
 
 ---
 ### Description of analytic results
-The following analytics are available are the results for each analytics are described below
+The following analytics are available and the results for each analytics are described below
 
 1. Object Detection: Identifies and localizes objects in scene
    + Results: List of list representing objects.
@@ -115,7 +115,7 @@ The following analytics are available are the results for each analytics are des
          + br.y: Y co-ordinate of the bottom right corner
 2. Pedestrian Density: Returns an estimate of the count of pedestrians in crowded scenes
    + Results: One value representing the density of pedestrians 
-   + Format: <density> (as string)
+   + Format: density value (as string)
 3. Person Attribute Recognition: Identifies attributes for each pedestrian detected in the image
    + Results: List of dictionaries representing attributes of each person. The folllowing attributes are provided
    + Format: [{person_1_attribute_1: value, person_1_attribute_2, value,...}, 
@@ -145,7 +145,7 @@ The following analytics are available are the results for each analytics are des
    
 5. Object Counter: Provides count of specified object based on object detection results
    + Results: One value representing the count of the object 
-   + Format: <count> (as string) 
+   + Format: count (as string) 
 
 
 
