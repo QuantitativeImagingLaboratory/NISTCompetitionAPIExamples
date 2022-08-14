@@ -16,7 +16,7 @@ If using virtual environment (create and activate it first):
 - Install Requirements
 > pip install -r requirements.txt
 - Set API_URL parameter: open settings.py and set the url for the host
-  - please contact email: to request the url 
+  - please contact email: pmantini(at)uh(dot)edu to request the url 
 
 ---
 ### Running the Examples
