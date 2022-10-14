@@ -14,7 +14,7 @@ def view_camera(camera, reshape=None):
 
     while True:
         response = requests.get("%s/main/camera/%s/get_live_data/" % (settings.API_SERVER, camera_id))
-        data = json.loads(response.json())
+        data = response.json()
 
         image = base64.b64decode(data["image"])
         dip = np.asarray(bytearray(image), dtype="uint8")

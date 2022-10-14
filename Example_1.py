@@ -6,6 +6,7 @@ def list_cameras():
     """List Cameras"""
     url = "%s/main/camera" % settings.API_SERVER
     response = requests.get(url)
+
     data = response.json()
 
     print("There are %s cameras" % (len(data)))
